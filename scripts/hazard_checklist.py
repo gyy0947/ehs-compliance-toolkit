@@ -103,30 +103,30 @@ def generate_checklist(check_type="用电安全", company="", project="", output
     
     lines = []
     lines.append(f"# 安全隐患排查检查表 — {check_type}")
-    lines.append(f"")
-    lines.append(f"- **检查日期**: ____年____月____日")
+    lines.append("")
+    lines.append("- **检查日期**: ____年____月____日")
     lines.append(f"- **检查类型**: {check_type}")
     if company:
         lines.append(f"- **受检单位**: {company}")
     if project:
         lines.append(f"- **项目/区域**: {project}")
-    lines.append(f"- **检查人员**: __________")
-    lines.append(f"")
-    lines.append(f"| 序号 | 检查项目 | 结果(✔/✘/N/A) | 问题描述 | 整改措施 | 整改责任人 | 完成期限 |")
-    lines.append(f"|------|---------|--------------|---------|---------|----------|--------|")
+    lines.append("- **检查人员**: __________")
+    lines.append("")
+    lines.append("| 序号 | 检查项目 | 结果(✔/✘/N/A) | 问题描述 | 整改措施 | 整改责任人 | 完成期限 |")
+    lines.append("|------|---------|--------------|---------|---------|----------|--------|")
     
     for i, item in enumerate(items, 1):
         lines.append(f"| {i} | {item} | | | | | |")
     
-    lines.append(f"")
-    lines.append(f"## 检查结论")
-    lines.append(f"")
-    lines.append(f"- 合格项: _____ 项")
-    lines.append(f"- 不合格项: _____ 项")
-    lines.append(f"- 不适用项: _____ 项")
-    lines.append(f"- 总体评价: □ 合格  □ 基本合格  □ 不合格")
-    lines.append(f"")
-    lines.append(f"---")
+    lines.append("")
+    lines.append("## 检查结论")
+    lines.append("")
+    lines.append("- 合格项: _____ 项")
+    lines.append("- 不合格项: _____ 项")
+    lines.append("- 不适用项: _____ 项")
+    lines.append("- 总体评价: □ 合格  □ 基本合格  □ 不合格")
+    lines.append("")
+    lines.append("---")
     lines.append(f"*生成工具: EHS Compliance Toolkit | {datetime.now().strftime('%Y-%m-%d %H:%M')}*")
     
     content = "\n".join(lines)

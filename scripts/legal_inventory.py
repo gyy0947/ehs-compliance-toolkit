@@ -83,57 +83,57 @@ def generate_inventory(industry="一般企业", company_name="", output_file=Non
     lines = []
     
     # 标题
-    lines.append(f"# EHS 法律法规适用性清单")
-    lines.append(f"")
+    lines.append("# EHS 法律法规适用性清单")
+    lines.append("")
     lines.append(f"- **编制日期**: {datetime.now().strftime('%Y年%m月%d日')}")
     lines.append(f"- **适用行业**: {industry}")
     if company_name:
         lines.append(f"- **编制单位**: {company_name}")
-    lines.append(f"- **说明**: 本清单列出企业 EHS 管理应适用的主要法律法规，供合规性评价参考。")
-    lines.append(f"")
-    lines.append(f"---")
-    lines.append(f"")
+    lines.append("- **说明**: 本清单列出企业 EHS 管理应适用的主要法律法规，供合规性评价参考。")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
 
     total = 0
     for category, regs in REGULATIONS.items():
         lines.append(f"## {category}")
-        lines.append(f"")
-        lines.append(f"| 序号 | 法律法规名称 | 文号 | 发布年份 | 状态 |")
-        lines.append(f"|------|-------------|------|---------|------|")
+        lines.append("")
+        lines.append("| 序号 | 法律法规名称 | 文号 | 发布年份 | 状态 |")
+        lines.append("|------|-------------|------|---------|------|")
         
         for i, reg in enumerate(regs, 1):
             lines.append(f"| {i} | {reg['name']} | {reg['number']} | {reg['year']} | {reg['status']} |")
         
         total += len(regs)
-        lines.append(f"")
+        lines.append("")
     
     # 行业专项
     if industry in INDUSTRY_EXTRA and INDUSTRY_EXTRA[industry]:
         lines.append(f"## {industry}行业专项法规")
-        lines.append(f"")
-        lines.append(f"| 序号 | 法律法规名称 | 文号 | 发布年份 | 状态 |")
-        lines.append(f"|------|-------------|------|---------|------|")
+        lines.append("")
+        lines.append("| 序号 | 法律法规名称 | 文号 | 发布年份 | 状态 |")
+        lines.append("|------|-------------|------|---------|------|")
         
         for i, reg in enumerate(INDUSTRY_EXTRA[industry], 1):
             lines.append(f"| {i} | {reg['name']} | {reg['number']} | {reg['year']} | {reg['status']} |")
         
         total += len(INDUSTRY_EXTRA[industry])
-        lines.append(f"")
+        lines.append("")
     
     # 国家标准
-    lines.append(f"## 相关标准规范")
-    lines.append(f"")
-    lines.append(f"| 序号 | 标准编号及名称 | 年份 |")
-    lines.append(f"|------|---------------|------|")
+    lines.append("## 相关标准规范")
+    lines.append("")
+    lines.append("| 序号 | 标准编号及名称 | 年份 |")
+    lines.append("|------|---------------|------|")
     
     for i, std in enumerate(GB_STANDARDS, 1):
         lines.append(f"| {i} | {std['name']} | {std['year']} |")
     
-    lines.append(f"")
-    lines.append(f"---")
+    lines.append("")
+    lines.append("---")
     lines.append(f"*共收录法律法规 {total} 项，标准 {len(GB_STANDARDS)} 项*")
     lines.append(f"*生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M')}*")
-    lines.append(f"*⚠️ 法律法规具有时效性，请以官方最新版本为准*")
+    lines.append("*⚠️ 法律法规具有时效性，请以官方最新版本为准*")
     
     content = "\n".join(lines)
     
